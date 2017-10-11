@@ -13,28 +13,28 @@ import java.util.List;
  */
 @Service
 public class SeminarServiceImpl {
-//    @Autowired
-//    private ProductDao productDao;
-//
-//
-//    public void create(Product p) {
-//        productDao.create(p);
-//    }
-//
-//
-//    public List<Product> findAll() {
-//        return productDao.findAll();
-//    }
-//
-//    public Product findById(Long id) {
-//        return productDao.findById(id);
-//    }
-//
-//    public void remove(Product p) throws IllegalArgumentException {
-//        productDao.remove(p);
-//    }
-//
-//    public List<Product> findByName(String name) {
-//        return productDao.findByName(name);
-//    }
+    @Autowired
+    private ProductDao productDao;
+
+
+    public void create(Product p) {
+        productDao.create(p);
+    }
+
+
+    public List<Product> findAll() {
+        return productDao.findAll();
+    }
+
+    public Product findById(Long id) {
+        return productDao.findById(id);
+    }
+
+    public void remove(Product p) throws IllegalArgumentException {
+        productDao.remove(p);
+    }
+
+    public List<Product> findByName(String name) {
+        return productDao.findByName(name);
+    }
 }

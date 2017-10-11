@@ -10,44 +10,44 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import org.springframework.stereotype.Repository;
 
-import cz.fi.muni.pa165.entity.Category;
+import cz.fi.muni.pa165.entity.Product;
 
 @Repository
-public class CategoryDaoImpl implements CategoryDao {
+public class ProductDaoImpl implements ProductDao {
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
-	public Category findById(Long id) {
-		return em.find(Category.class, id);
-	}
-
-	@Override
-	public List<Category> findAll() {
-		return em.createQuery("select c from Category c", Category.class)
-				.getResultList();
-	}
-
-	@Override
-	public void create(Category c) {
+	public void create(Product c) {
 		em.persist(c);
 	}
 
 	@Override
-	public void delete(Category c) {
+	public List<Product> findAll() {
+		return em.createQuery("select c from Product c", Product.class)
+				.getResultList();
+	}
+
+	@Override
+	public Product findById(Long id) {
+		return em.find(Product.class, id);
+	}
+
+	@Override
+	public void remove(Product c) {
 		em.remove(c);
 	}
 
 	@Override
-	public Category findByName(String name) {
+	public List<Product> findByName(String name) {
 		try {
 			return em
-					.createQuery("select c from Category c where name = :name",
-							Category.class).setParameter(":name", name)
-					.getSingleResult();
+                            .createQuery("select c from Product c where name = :name",
+                                Product.class).setParameter(":name", name).getResultList();
 		} catch (NoResultException nrf) {
 			return null;
 		}
 	}
+
 }
